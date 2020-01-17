@@ -8,9 +8,10 @@ const DevSchema = new mongoose.Schema({
     avatar_url: String,
     techs: [String],
     location: {
-        type: PointSchema,
-        createIndex: "2dsphere"
+        type: PointSchema
     }
 });
+
+DevSchema.index({location: '2dsphere'});
 
 module.exports = mongoose.model('Dev', DevSchema);
